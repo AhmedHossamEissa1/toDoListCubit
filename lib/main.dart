@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:simple_to_do_list_cubit/cubits/add_cubit/add_cubit.dart';
 import 'package:simple_to_do_list_cubit/list_app_cubit_body.dart';
 
 void main() {
@@ -12,7 +14,10 @@ class listAppCubit extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: listAppCubitBody(),
+      home: BlocProvider(
+        create: (context) => AddCubit(),
+        child: listAppCubitBody(),
+      ),
     );
   }
 }
